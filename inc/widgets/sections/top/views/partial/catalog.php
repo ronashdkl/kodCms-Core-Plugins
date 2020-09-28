@@ -2,7 +2,7 @@
 /**
  * @var $list object
  */
-$service = \kodCmsPlugin\modules\admin\models\Tree::find()->Where(['id' => $list->{$list->type}])->one();
+$service = \ronashdkl\kodCms\modules\admin\models\Tree::find()->Where(['id' => $list->{$list->type}])->one();
 $catalogsQuery = $service->children();
 if ($catalogsQuery->count() > 0) {
     $catalogs = $catalogsQuery->all();
@@ -10,6 +10,7 @@ if ($catalogsQuery->count() > 0) {
 
     ?>
     <li class="nav-item dropdown <?=$list->responsive_only?'responsive_only':null?>"><a href="javascript:;" class="nav-link dropdown-toggle" id="navbarDropdown"
+            breadcrumbs
                                                                                         role="button" aria-haspopup="true" aria-expanded="false"><?= $service->name ?></a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <?php
@@ -17,7 +18,7 @@ if ($catalogsQuery->count() > 0) {
             $link = $list->link;
             if ($link == null) {
                 if ($catalog->link == null) {
-                    $link = '/tjanster/' . $catalog->name;
+                    $link = '/category/' . $catalog->name;
                 } else {
                     $link = $catalog->link;
                 }

@@ -32,6 +32,7 @@
                    <li class="nav-item <?=$list->responsive_only?'responsive_only':null?>"><?= \yii\helpers\Html::a($list->name, $list->{$list->type},['class'=>'nav-link page-scroll']) ?></li>
                <?php }
            } ?>
+           <?=Yii::$app->hooks->do_action('kodCms-navigation')?>
        </ul>
         <span class="nav-item social-icons">
                 <span class="fa-stack">

@@ -19,6 +19,8 @@ use kodCmsPlugin\admin\controllers\SeoController;
 use kodCmsPlugin\admin\controllers\ServicesController;
 use kodCmsPlugin\admin\controllers\TestimonialController;
 use kodCmsPlugin\admin\controllers\TopMenuController;
+use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 
 class Admin
@@ -26,14 +28,6 @@ class Admin
 
     /**
      * Register Block menu on admin panel
-     * To override full block you can apply this code
-     * eg ['items'=>
-     * [
-     * ['label' => 'Product', 'url' => ['/admin/product']]
-     * ],
-     * 'override'=>true
-     * ];
-     *
      * @return array
      */
 
@@ -44,27 +38,18 @@ class Admin
 
     /**
      * Register menu on admin panel
-     *
-     * To override full menu you can apply this code
-     * eg ['items'=>
-     * [
-     * ['label' => 'Product', 'url' => ['/admin/product']]
-     * ],
-     * 'override'=>true
-     * ];
-     *
+
      * @return array
      */
-    function registerMenu()
+    function registerMenu($menu)
     {
-          return [
+          return array_merge($menu,[
 
         ['label' => 'KodCms Plugin','icon'=>'plug', 'items'=>[
             ['label' => 'Menu', 'url' => ['/admin/menu']],
             ['label' => 'Hero', 'url' => ['/admin/header']],
             ['label' => 'Clients', 'url' => ['/admin/clients']],
             ['label' => 'Services', 'url' => ['/admin/services']],
-            ['label' => 'About', 'url' => ['/admin/about/index']],
             ['label' => 'Detail Box', 'url' => ['/admin/detail-box']],
             ['label' => 'Testimonial', 'url' => ['/admin/testimonial']],
             ['label' => 'Price', 'url' => ['/admin/price']],
@@ -72,13 +57,13 @@ class Admin
 
         ]],
 
-    ];
+    ]);
     }
 
-    function addController()
+    function addController($controllers)
     {
-        return [
-           'clients'=>ClientsController::class,
+        return ArrayHelper::merge($controllers,[
+            'clients'=>ClientsController::class,
             'detail-box'=>DetailBoxController::class,
             'header'=>HeaderController::class,
             'price'=>PriceController::class,
@@ -94,7 +79,7 @@ class Admin
             'notice'=>NoticeController::class,
             'seo'=>SeoController::class
 
-        ];
+        ]);
     }
 
     function register()

@@ -16,6 +16,10 @@ class TopHeaderWidget extends Widget
     public function run()
     {
         parent::run();
-        return $this->render('info',['model'=>new MenuModel()]);
+        $model = new MenuModel();
+        if($model->list>0) {
+            return $this->render('info', ['model' => new MenuModel()]);
+        }
+        return null;
     }
 }

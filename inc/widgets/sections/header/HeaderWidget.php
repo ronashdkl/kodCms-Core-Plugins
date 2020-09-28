@@ -5,6 +5,7 @@ namespace kodCmsPlugin\widgets\sections\header;
 
 use kodCmsPlugin\models\header\HeaderModel;
 use kodCmsPlugin\widgets\sections\SectionWidget;
+use yii\helpers\VarDumper;
 
 class HeaderWidget extends SectionWidget
 {

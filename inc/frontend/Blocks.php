@@ -31,9 +31,8 @@ class Blocks
 
     public function register()
     {
-        \Yii::$app->hooks->add_filter('block_list',function(){
-            return $this->list;
+        \Yii::$app->hooks->add_filter('block_list',function($list){
+            return array_merge($list,$this->list);
         });
-       // \ Yii::$app->widgetList = array_merge(\Yii::$app->widgetList, $this->list);
     }
 }
